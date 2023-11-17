@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title_head %}
+    Detalles del Tratamiento: {{ tratamiento.nombre }}
+{% endblock title_head %}
+
+{% block content %}
+<ul>
+    <li>Descripción: {{ tratamiento.descripcion }}</li>
+    {% if tratamiento.imagen %}
+        <li>Imagen: <img src="{{ tratamiento.imagen.url }}" alt="{{ tratamiento.nombre }}"></li>
+    {% endif %}
+</ul>
+<a href="{% url 'tratamiento-list' %}">Volver a la lista de tratamientos</a>
+{% endblock content %}
+
+
+
+
+

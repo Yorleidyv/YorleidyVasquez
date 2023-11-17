@@ -1,0 +1,27 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title_head %}
+    Lista de Tratamientos
+{% endblock title_head %}
+
+{% block content %}
+<p>
+    <a href={% url "tratamiento-create" %}>Crear Tratamiento</a>
+</p>
+
+<form action={% url "tratamiento-list" %} method="GET">
+    <input type="text" name="nombre" placeholder="Nombre del tratamiento...">
+    <input type="submit" value="Buscar">
+</form>
+
+{% if tratamientos %}
+<ul>
+    {% for tratamiento in tratamientos %}
+    <li><a href={% url "tratamiento-detail" tratamiento.pk %}>{{ tratamiento.nombre }}</a> | <a href={% url "tratamiento-update" tratamiento.pk %}>Actualizar</a> | <a href={% url "tratamiento-delete" tratamiento.pk %}>Eliminar</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron tratamientos.</p>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title_head %}Crear/Actualizar Tratamiento{% endblock title_head %}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Crear">
+</form>
+{% endblock content %}

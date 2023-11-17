@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+{% load static %}
+
+<h2 class="section-heading mb-4">
+    <span class="section-heading-upper">Bienestar & plenitud</span>
+    <span class="section-heading-lower">{{ sobre_mi_instance.titulo }}</span>
+</h2>
+<p>{{ sobre_mi_instance.contenido | safe }}</p>
+
+{% block content %}
+        <section class="page-section about-heading">
+            <div class="container">
+                <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="{% static "assets/img/about.jpg" %}" alt="..." />
+                <div class="about-heading-content">
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-10 mx-auto">
+                            <div class="bg-faded rounded p-5">
+                                <h2 class="section-heading mb-4">
+                                    <span class="section-heading-upper">Bienestar & plenitud</span>
+                                    <span class="section-heading-lower">Sobre mis servicios</span>
+                                </h2>
+                                <p>¡Hola! Soy Aureliana Moros, todos me llaman Aura, la terapeuta apasionada detrás de "Bienestar y Plenitud". Con años de experiencia en masoterapia y estética personalizada, mi objetivo es crear un espacio donde puedas encontrar equilibrio y rejuvenecimiento. Creo en la belleza natural y en tratamientos personalizados para cada cliente. En "Bienestar y Plenitud", te ofrezco no solo servicios, sino un compromiso genuino con tu bienestar. Estoy emocionado de ser parte de tu viaje hacia una vida más saludable y plena. ¡Espero conocerte pronto!</p>
+                                <p class="mb-0">
+                                    Con cariño
+                                    <em>Aura</em>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer text-faded text-center py-5">
+            <div class="container"><p class="m-0 small">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="{% static "js/scripts.js" %}"></script>
+        </body>
+        </html>
+
+{% endblock content %}

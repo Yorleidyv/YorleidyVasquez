@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_head %}
+
+{% endblock title_head %}
+
+{% block content %}
+<li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href={% url "tratamiento-list" %}>Lista de Tratamientos</a></li>
+<ul>
+    {% for tratamiento in tratamientos %}
+        <li>
+            <h2>{{ tratamiento.nombre }}</h2>
+            <p>{{ tratamiento.descripcion }}</p>
+            {% if tratamiento.imagen %}
+                <img src="{{ tratamiento.imagen.url }}" alt="{{ tratamiento.nombre }}">
+            {% endif %}
+            <a href="{% url 'tratamiento-detail' pk=tratamiento.pk %}">Detalles</a>
+            <a href="{% url 'tratamiento-update' pk=tratamiento.pk %}">Editar</a>
+            <a href="{% url 'tratamiento-delete' pk=tratamiento.pk %}">Eliminar</a>
+        </li>
+    {% endfor %}
+</ul>
+
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <div class="product-item-title d-flex">
+                    <div class="bg-faded p-5 d-flex ms-auto rounded">
+                        <h2 class="section-heading mb-0">
+                            <span class="section-heading-upper">Belleza de uñas, pestañas y más</span>
+                            <span class="section-heading-lower">Tratamientos esteticos</span>
+                        </h2>
+                    </div>
+                </div>
+                <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static "assets/img/products-01.jpg" %}" alt="..." />
+                <div class="product-item-description d-flex me-auto">
+                    <div class="bg-faded p-5 rounded"><p class="mb-0">
+                        Pedicure:
+                        El pedicure es un tratamiento estético para los pies que implica el cuidado y embellecimiento de las uñas, así como el tratamiento de la piel circundante. Incluye la limpieza de las uñas, el recorte y limado, la eliminación de cutículas, la exfoliación de la piel y, a veces, el esmaltado de las uñas.
+                        Manicure:
+                        El manicure es un procedimiento de cuidado de las manos y las uñas. Involucra la limpieza, el recorte y limado de las uñas, la eliminación de cutículas, la hidratación de la piel y, opcionalmente, el esmaltado de las uñas. También puede incluir tratamientos adicionales, como masajes de manos y aplicación de esmalte de uñas.
+                        Lifting de pestañas:
+                        El lifting de pestañas es un tratamiento estético para realzar la curvatura natural de las pestañas. Implica el uso de productos químicos suaves para modificar la forma de las pestañas, levantándolas desde la base. Esto crea un efecto de pestañas más largas y curvadas sin necesidad de extensiones. El proceso puede incluir la tintura de pestañas para darles un aspecto más oscuro y definido. Este tratamiento busca realzar la belleza natural de las pestañas sin el uso de pestañas postizas.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <div class="product-item-title d-flex">
+                    <div class="bg-faded p-5 d-flex me-auto rounded">
+                        <h2 class="section-heading mb-0">
+                            <span class="section-heading-upper">Renovadores y necesarios</span>
+                            <span class="section-heading-lower">Masajes Relajantes</span>
+                        </h2>
+                    </div>
+                </div>
+                <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static "assets/img/products-02.jpg" %}" alt="..." />
+                <div class="product-item-description d-flex ms-auto">
+                    <div class="bg-faded p-5 rounded"><p class="mb-0">El masaje relajante es una técnica destinada a reducir el estrés y promover la relajación física y mental. Se realiza mediante movimientos suaves y fluidos, con presiones ligeras a moderadas, centrando la atención en áreas de tensión como espalda, cuello y hombros. El objetivo principal es inducir un estado de tranquilidad, mejorar la circulación sanguínea y aliviar la tensión muscular. Los masajes relajantes suelen utilizarse como terapia para reducir la ansiedad, mejorar el bienestar general y proporcionar una experiencia placentera.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <div class="product-item-title d-flex">
+                    <div class="bg-faded p-5 d-flex ms-auto rounded">
+                        <h2 class="section-heading mb-0">
+                            <span class="section-heading-upper">Los preferidos</span>
+                            <span class="section-heading-lower">Masajes Reductores</span>
+                        </h2>
+                    </div>
+                </div>
+                <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="{% static "assets/img/products-03.jpg" %}" alt="..." />
+                <div class="product-item-description d-flex me-auto">
+                    <div class="bg-faded p-5 rounded"><p class="mb-0">El masaje reductor es una técnica enfocada en reducir medidas y mejorar la apariencia de la piel. Se realiza principalmente en áreas propensas a acumular grasa. El objetivo es estimular la circulación sanguínea, activar el metabolismo local y reducir la celulitis mediante movimientos específicos y el uso de productos reductores. Aunque puede ser complementario a un estilo de vida saludable, no garantiza la pérdida de peso permanente y requiere consistencia para obtener resultados efectivos.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <!-- Contenido adicional -->
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <!-- Contenido adicional -->
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <!-- Contenido adicional -->
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+{% endblock content %}
