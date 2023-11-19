@@ -384,7 +384,9 @@ button,
 [type=button],
 [type=reset],
 [type=submit] {
-  -webkit-appearance: button;
+  -webkit-appearance: value; /* Prefijo de Webkit (Safari, Chrome) */
+  -moz-appearance: value;    /* Prefijo de Mozilla (Firefox) */
+  appearance: value;         /* Estándar */
 }
 button:not(:disabled),
 [type=button]:not(:disabled),
@@ -442,7 +444,9 @@ legend + * {
 
 [type=search] {
   outline-offset: -2px;
-  -webkit-appearance: textfield;
+  -webkit-appearance: value;
+  -moz-appearance: value;
+  appearance: value; 
 }
 
 /* rtl:raw:
@@ -463,9 +467,10 @@ legend + * {
 
 ::file-selector-button {
   font: inherit;
-  -webkit-appearance: button;
+  -webkit-appearance: value;
+  -moz-appearance: value;
+  appearance: value;
 }
-
 output {
   display: inline-block;
 }
@@ -10849,13 +10854,13 @@ p {
 }
 .site-heading .site-heading-upper {
   display: block;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 800;
 }
 .site-heading .site-heading-lower {
-  font-size: 5rem;
+  font-size: 2rem;
   font-weight: 100;
-  line-height: 4rem;
+  line-height: 2rem;
 }
 
 .page-section {

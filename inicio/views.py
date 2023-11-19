@@ -22,7 +22,14 @@ class TratamientoListView(ListView):
     context_object_name = 'tratamientos'
 
     def get_queryset(self):
-        return Tratamiento.objects.all()
+        nombre_tratamiento = self.request.GET.get('nombre', '')
+
+        if nombre_tratamiento:
+            queryset = Tratamiento.objects.filter(nombre__icontains=nombre_tratamiento)
+        else:
+            queryset = Tratamiento.objects.all()
+
+        return queryset
 
 
 class TratamientoDetailView(DetailView):

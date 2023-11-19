@@ -1,3 +1,4 @@
 from django.contrib import admin
+from cuentas.models import DatosExtra
 
-# Register your models here.
+admin.site.register(DatosExtra)
