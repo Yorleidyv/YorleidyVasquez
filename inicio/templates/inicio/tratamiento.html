@@ -1,13 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title_head %}
-
-{% endblock title_head %}
 
 {% block content %}
-<li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href={% url "tratamiento-list" %}>Lista de Tratamientos</a></li>
-<ul>
+
     {% for tratamiento in tratamientos %}
         <li>
             <h2>{{ tratamiento.nombre }}</h2>

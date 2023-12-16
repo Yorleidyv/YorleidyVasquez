@@ -1,20 +1,64 @@
-{% extends "base.html" %}
+<style>
+    .white-background {
+      background-color: white;
+      padding: 20px;
+    }
+  </style>
+  
+  {% extends "base.html" %}
+  
+  {% block content %}
+    <div class="white-background">
+        {% if user.is_authenticated %}
+    <h2>Bienvenido, {{ user.username }}!</h2>
+    <p>Email: {{ user.email }}</p>
+    <p>Nombre: {{ user.first_name }}</p>
+    <p>Apellido: {{ user.last_name }}</p>
 
+    {% if datos_extra %}
+      <p>Biografía: {{ datos_extra.biografia }}</p>
+      <p>Otra información: {{ datos_extra.otra_info }}</p>
+    {% endif %}
 
-{% block content %}
+    <a class="navbar-brand" href={% url "editar_perfil" %}>
+      {% if datos_extra and datos_extra.avatar %}
+        <img src="{{ datos_extra.avatar.url }}" alt="avatar" height='60px'>
+      {% endif %}
+      {{ user.username }}
+    </a>
+    <a class="btn btn-warning" href={% url "logout" %}>Cerrar Sesión</a>
+  {% else %}
+    <h2>Nos encanta que seas parte...</h2>
+    <p>¡Inicia sesión para ver más detalles!</p>
+    <a class="btn btn-primary" href={% url "login" %}>Iniciar Sesión</a>
+    <a class="btn btn-secondary" href={% url "registrarse" %}>Registrarse</a>
+  {% endif %}
+    </div>
+  {% endblock content %}
+{% comment %} {% block content %}
+
 <h2>Bienvenido, {{ user.username }}!</h2>
+
+<p>Email: {{ user.email }}</p>
+<p>Nombre: {{ user.first_name }}</p>
+<p>Apellido: {{ user.last_name }}</p>
+
+{% if datos_extra %}
+<p>Biografia: {{ datos_extra.biografia }}</p>
+<p>Otra información: {{ datos_extra.otra_info }}</p>
+{% endif %}
 
 {% if not request.user.is_authenticated %}
 <a class="btn btn-primary" href={% url "login" %}>Iniciar Sesion</a>
 <a class="btn btn-secondary" href={% url "registrarse" %}>Registrarse</a>
 {% else %}
 <a class="navbar-brand" href={% url "editar_perfil" %}>
-    {% if request.user.datosextra.avatar %}
-        <img src={{request.user.datosextra.avatar.url}} alt="avatar" height='40px'>
+    {% if datos_extra and datos_extra.avatar %}
+    <img src="{{ datos_extra.avatar.url }}" alt="avatar" height='60px'>
     {% endif %}
-    {{request.user.username}}
+    {{ user.username }}
 </a>
 <a class="btn btn-warning" href={% url "logout" %}>Cerrar Sesion</a>
 {% endif %}
 
-{% endblock content %}
+{% endblock content %} {% endcomment %}

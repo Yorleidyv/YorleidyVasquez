@@ -1,4 +1,4 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title_head %}
@@ -6,16 +6,26 @@
 {% endblock title_head %}
 
 {% block content %}
-<ul>
-    <li>Descripción: {{ tratamiento.descripcion }}</li>
-    {% if tratamiento.imagen %}
-        <li>Imagen: <img src="{{ tratamiento.imagen.url }}" alt="{{ tratamiento.nombre }}"></li>
+<div style="background-color: white; padding: 20px; border-radius: 10px;">
+    {{ form.media }}
+
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'tratamiento-update' tratamiento.pk %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </form>
     {% endif %}
-</ul>
-<a href="{% url 'tratamiento-list' %}">Volver a la lista de tratamientos</a>
+
+    <ul>
+        <li>Descripción: {{ tratamiento.descripcion }}</li>
+        {% if tratamiento.imagen %}
+            <li>Imagen: <img src="{{ tratamiento.imagen.url }}" alt="{{ tratamiento.nombre }}"></li>
+        {% endif %}
+    </ul>
+
+    <a href="{% url 'tratamiento-list' %}">Volver a la lista de tratamientos</a>
+</div>
 {% endblock content %}
-
-
 
 
 

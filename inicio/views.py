@@ -46,15 +46,33 @@ class TratamientoDetailView(DetailView):
 class TratamientoCreateView(LoginRequiredMixin, CreateView):
     model = Tratamiento
     template_name = 'inicio/tratamiento_form.html'
-    fields = ['nombre', 'descripcion', 'imagen']
+    form_class = TratamientoForm
     success_url = reverse_lazy('tratamiento-list')
 
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.get_form()
+        return context
+
+
+# class TratamientoUpdateView(LoginRequiredMixin, UpdateView):
+#     model = Tratamiento
+#     template_name = 'inicio/tratamiento_form.html'
+#     form_class = TratamientoForm
+#     success_url = reverse_lazy('tratamiento-list')
 
 class TratamientoUpdateView(LoginRequiredMixin, UpdateView):
     model = Tratamiento
-    template_name = 'inicio/tratamiento_form.html'
-    form_class = TratamientoForm
-    success_url = reverse_lazy('tratamiento')
+    form_class = TratamientoForm 
+    template_name = 'inicio/tratamiento_detail.html'
+    success_url = reverse_lazy('tratamiento-list')
+
+    def get_object(self, queryset=None):
+        return Tratamiento.objects.get(pk=self.kwargs['pk'])
 
 class TratamientoDeleteView(LoginRequiredMixin, DeleteView):
     model = Tratamiento

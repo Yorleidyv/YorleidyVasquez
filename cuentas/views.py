@@ -8,7 +8,10 @@ from cuentas.forms import MiFormularioDeCreacion, EdicionPerfil
 from cuentas.models import DatosExtra
 
 def Usuario(request):
-    return render(request, 'cuentas/usuario.html', context={'key': 'value'})
+    user = request.user
+    datos_extra = user.datosextra if hasattr(user, 'datosextra') else None
+
+    return render(request, 'cuentas/usuario.html', {'user': user, 'datos_extra': datos_extra})
 
 def login(request):
     
@@ -26,7 +29,7 @@ def login(request):
             
             DatosExtra.objects.get_or_create(user=request.user)
             
-            return redirect('tratamiento')
+            return redirect('usuario')
               
     return render(request, 'cuentas/login.html', {'formulario_de_login': formulario})
 
@@ -65,9 +68,9 @@ def editar_perfil(request):
             datos_extra.save()
             formulario.save()
             
-            return redirect('editar_perfil')
+            return redirect('usuario')
     
-    return render(request, 'cuentas/editar_perfil.html', {'formulario': formulario})
+    return render(request, 'cuentas/editar_perfil.html', {'formulario': formulario, 'datos_extra': datos_extra})
 
 class CambiarPassword(PasswordChangeView):
     template_name = 'cuentas/cambiar_password.html'
