@@ -6,6 +6,8 @@ from .forms import TratamientoForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseNotFound
 
+
+
 def inicio(request):
     return render(request, 'inicio/inicio.html', context={'key': 'value'})
 
@@ -73,6 +75,7 @@ class TratamientoUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return Tratamiento.objects.get(pk=self.kwargs['pk'])
+ 
 
 class TratamientoDeleteView(LoginRequiredMixin, DeleteView):
     model = Tratamiento

@@ -13,6 +13,7 @@
         <form method="post" action="{% url 'tratamiento-update' tratamiento.pk %}">
             {% csrf_token %}
             {{ form.as_p }}
+            <input type="submit" value="Guardar cambios">
         </form>
     {% endif %}
 
